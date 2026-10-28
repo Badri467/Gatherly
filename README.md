@@ -117,3 +117,7 @@ Export plan also offers guest/RSVP and vendor-payment CSVs. Guest exports includ
 The studio includes inline field errors, visible keyboard focus, labeled mobile navigation, required-field and contact validation, shared event validation for creation and editing, RSVP deadline checks, vendor payment checks, and explicit AI generation states. Source-file imports check type and size before submission and validate AI drafts server-side. Read `DEMO-GUIDE.md` for the 3:45 submission walkthrough.
 
 This is still a local-first application. UI polish does not add accounts, cloud backups, public RSVP links, background notifications, or production hosting.
+
+
+## Node backend architecture update
+Authentication, event persistence, and AI now run through the modular Node backend. The browser calls /api/auth/* and /api/events; Supabase settings are kept server-side. Existing environment variables and Render start commands remain valid. See backend/README.md for the current route reference and architecture. Earlier instructions describing direct browser-to-Supabase calls are superseded by this implementation.

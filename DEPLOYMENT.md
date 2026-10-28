@@ -44,3 +44,7 @@ Test with two accounts before sharing: one user must never see or update the oth
 - Keep Gemini usage within the quotas shown for your model/key in Google AI Studio. Availability of free AI requests depends on model and account; hosting being free does not make model calls unlimited.
 
 No accounts, database connection, or public deployment have been created by this guide.
+
+
+## Node backend architecture update
+Authentication, event persistence, and AI now run through the modular Node backend. The browser calls /api/auth/* and /api/events; Supabase settings are kept server-side. Existing environment variables and Render start commands remain valid. See backend/README.md for the current route reference and architecture. Earlier instructions describing direct browser-to-Supabase calls are superseded by this implementation.
