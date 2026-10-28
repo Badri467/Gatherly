@@ -1,0 +1,11 @@
+.env
+node_modules/
+*.log
+.env.*
+!.env.example
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.zip
