@@ -1,0 +1,129 @@
+{
+  "event": {
+    "name": "Community garden day",
+    "type": "Community",
+    "date": "2027-02-15",
+    "budget": 50000,
+    "guests": 40,
+    "currency": "INR",
+    "location": "Local Community Garden",
+    "theme": "Garden Volunteer and Social Day"
+  },
+  "plan": {
+    "budget": [
+      {
+        "id": "b0",
+        "category": "Venue",
+        "allocated": 20000,
+        "spent": 5000
+      },
+      {
+        "id": "b1",
+        "category": "Catering",
+        "allocated": 20000,
+        "spent": 0
+      },
+      {
+        "id": "b2",
+        "category": "Activities",
+        "allocated": 5000,
+        "spent": 0
+      },
+      {
+        "id": "b3",
+        "category": "Contingency",
+        "allocated": 5000,
+        "spent": 0
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t0",
+        "title": "Book venue",
+        "date": "2027-01-15",
+        "done": false
+      },
+      {
+        "id": "t1",
+        "title": "Confirm catering",
+        "date": "2027-02-01",
+        "done": false
+      },
+      {
+        "id": "t2",
+        "title": "Finalize activity schedule",
+        "date": "2027-02-05",
+        "done": false
+      },
+      {
+        "id": "t3",
+        "title": "Purchase gardening supplies",
+        "date": "2027-02-10",
+        "done": false
+      }
+    ],
+    "vendors": [
+      {
+        "id": "v0",
+        "category": "Venue",
+        "name": "",
+        "contact": "",
+        "status": "To research"
+      },
+      {
+        "id": "v1",
+        "category": "Catering",
+        "name": "",
+        "contact": "",
+        "status": "To research"
+      },
+      {
+        "id": "v2",
+        "category": "Decor",
+        "name": "",
+        "contact": "",
+        "status": "To research"
+      },
+      {
+        "id": "v3",
+        "category": "Photography",
+        "name": "",
+        "contact": "",
+        "status": "To research"
+      },
+      {
+        "id": "v4",
+        "category": "Entertainment",
+        "name": "",
+        "contact": "",
+        "status": "To research"
+      }
+    ],
+    "ideas": [
+      {
+        "title": "Bring the neighborhood together",
+        "description": "Create a Garden Volunteer and Social Day welcome corner with a shared photo wall and handwritten messages."
+      },
+      {
+        "title": "Local flavors, happy guests",
+        "description": "Plan a seasonal menu for 40 guests. Offer a vegetarian main, clearly label allergens, and confirm dietary needs with RSVPs."
+      },
+      {
+        "title": "Small footprint, big memories",
+        "description": "Use reusable tableware, digital invitations, and locally sourced decor. Set up a refill station and a simple waste sorting area."
+      }
+    ],
+    "aiNotes": "This is a community-focused garden day event with a total budget of 50,000 INR. The current status shows 5,000 INR spent on the venue, with significant remaining budget for catering and activities as the event date approaches.",
+    "importAssumptions": [
+      "Venue location is assumed to be a local community garden as per event title.",
+      "The event theme is assumed to be community-focused gardening activities.",
+      "Unspent budget categories have been set to zero as per instructions."
+    ],
+    "provider": "gemini"
+  },
+  "assumptions": [
+    "Venue location is assumed to be a local community garden as per event title.",
+    "The event theme is assumed to be community-focused gardening activities.",
+    "Unspent budget categories have been set to zero as per instructions."
+  ]
+}
