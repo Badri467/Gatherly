@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: gatherly
+    runtime: node
+    plan: free
+    buildCommand: node --test
+    startCommand: node server.mjs
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: HOST
+        value: 0.0.0.0
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      - key: GEMINI_API_KEY
+        sync: false
+
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: AI_REQUESTS_PER_HOUR
+        value: 20
+      - key: AI_TOTAL_REQUESTS_PER_HOUR
+        value: 200
