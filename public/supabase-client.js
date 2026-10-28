@@ -1,6 +1,6 @@
 // Supabase REST transport: publishable key + user JWT; row policies enforce ownership.
 export class SupabaseClient {
- constructor(url,key,fetcher=fetch){this.url=url.replace(/\/$/,'');this.key=key;this.fetcher=fetcher;this.session=null;this.refreshing=null;}
+ constructor(url,key,fetcher=fetch){this.url=url.replace(/\/$/,'');this.key=key;this.fetcher=fetcher.bind(globalThis);this.session=null;this.refreshing=null;}
  async request(path,{method='GET',body,headers={},auth=true}={}){if(auth)await this.refresh();const r=await this.fetcher(this.url+path,{method,headers:{apikey:this.key,'Content-Type':'application/json',...(auth&&this.session?{Authorization:'Bearer '+this.session.access_token}:{}),...headers},...(body!==undefined?{body:JSON.stringify(body)}:{})});const data=await r.json().catch(()=>null);if(!r.ok)throw Error(data?.msg||data?.error_description||data?.message||data?.error||'Cloud request failed ('+r.status+').');return data;}
  setSession(s){this.session=s?.access_token?{...s,expires_at:s.expires_at||Math.floor(Date.now()/1000)+(s.expires_in||3600)}:null;}
  async refresh(){if(!this.session)throw Error('Sign in to continue.');if(this.session.expires_at>Date.now()/1000+60)return;if(!this.refreshing)this.refreshing=this.request('/auth/v1/token?grant_type=refresh_token',{method:'POST',auth:false,body:{refresh_token:this.session.refresh_token}}).then(s=>this.setSession(s)).finally(()=>this.refreshing=null);await this.refreshing;}
