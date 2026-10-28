@@ -13,3 +13,4 @@ select{appearance:none;-webkit-appearance:none;background-color:#fffefa;backgrou
 
 main>header{justify-content:flex-end}
 .cloud-status{font-size:11px;color:#4c6853;max-width:180px}.header-actions{flex-wrap:wrap;gap:10px}#account-dialog{width:min(520px,94vw)}#account-dialog label{display:block;margin:18px 0}#account-dialog input{width:100%}#account-dialog .feature-actions{flex-wrap:wrap}#account-error:not(:empty){padding:12px;background:#f8eee3;color:#794728;font-size:13px;line-height:1.7}#account-signed{display:flex;flex-wrap:wrap;gap:10px}#account-signed[hidden]{display:none}
+#account-dialog label[hidden]{display:none}.auth-switch{font-size:13px;margin:14px 0 0}.auth-switch .text-button{font-weight:600;color:#245b48}
