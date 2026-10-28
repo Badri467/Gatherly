@@ -1,0 +1,3 @@
+import {supabaseUrl,supabaseKey,cloudConfigured} from '../config.mjs';
+import {fail} from '../middleware/http.mjs';
+export async function supabase(path,{method='GET',token,body,headers={}}={}){if(!cloudConfigured)throw fail(503,'Supabase is not configured on the server.');const response=await fetch(supabaseUrl+path,{method,headers:{apikey:supabaseKey,'Content-Type':'application/json',...(token?{Authorization:token}:{}),...headers},...(body!==undefined?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});const result=await response.json().catch(()=>null);if(!response.ok)throw fail(response.status,result?.msg||result?.error_description||result?.message||'Database request failed.');return result;}
