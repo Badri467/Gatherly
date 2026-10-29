@@ -1,3 +1,4 @@
+import {runtimeSettings} from './runtime.mjs';
 import {plannerRoutes} from './routes/planner.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
@@ -14,7 +15,7 @@ export function createApp(){return http.createServer(async(req,res)=>{
  if(req.url==='/api/config'&&req.method==='GET')return json(200,{cloudEnabled:cloudConfigured});
  if(req.method==='POST'&&['/api/plan','/api/chat','/api/import'].includes(req.url)&&(provider!=='demo'||req.url==='/api/import')){
  if(cloudConfigured){let user;try{user=await verifiedUser(req,{url:supabaseUrl,key:supabaseKey});}catch(e){return json(401,{error:e.message});}if(!aiLimit(user.id)||!totalLimit('all'))return json(429,{error:'AI usage limit reached. Please try again in an hour.'});}
- else if(process.env.HOST==='0.0.0.0')return json(503,{error:'Configure Supabase authentication before using public AI endpoints.'});
+ else if(runtimeSettings().publicServer)return json(503,{error:'Configure Supabase authentication before using public AI endpoints.'});
  }
  if(req.url==='/api/health')return json(200,{ok:true,provider,model:provider==='ollama'?(process.env.OLLAMA_MODEL||'gemma3:4b'):provider==='gemini'?(process.env.GEMINI_MODEL||'gemini-3.1-flash-lite'):'Rule-based demo',imports:Boolean(process.env.GEMINI_API_KEY)});
  if(await plannerRoutes(req,res))return;
