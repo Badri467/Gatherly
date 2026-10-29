@@ -1,3 +1,4 @@
+import {selectProvider} from './provider.mjs';
 import {createLimiter} from '../cloud-security.mjs';
 export const supabaseUrl=(process.env.SUPABASE_URL||'').replace(/\/$/,'');
 export const supabaseKey=process.env.SUPABASE_PUBLISHABLE_KEY||'';
@@ -7,4 +8,4 @@ if(supabaseUrl&&!/^https:\/\/[a-z0-9.-]+(?::[0-9]+)?$/.test(supabaseUrl))throw E
 export const cloudConfigured=Boolean(supabaseUrl&&supabaseKey);
 export const aiLimit=createLimiter({limit:Number(process.env.AI_REQUESTS_PER_HOUR)||20});
 export const totalLimit=createLimiter({limit:Number(process.env.AI_TOTAL_REQUESTS_PER_HOUR)||200});
-export const provider=process.env.AI_PROVIDER || 'demo';
+export const provider=selectProvider();
